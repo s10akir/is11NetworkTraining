@@ -16,7 +16,7 @@ class MyClientSocket {
     
     MyClientSocket() {
         try {
-            Socket socket = new Socket(InetAddress.getByName("127.0.0.1"), 1234);
+            socket = new Socket(InetAddress.getByName("127.0.0.1"), 1234);
         } catch (IOException err) {
             System.out.println(err.toString());
         }
