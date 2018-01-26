@@ -13,10 +13,17 @@ public class MyClient {
 
 class MyClientSocket {
     Socket socket;
-    
+    BufferedReader br;
+    String buf;
+
     MyClientSocket() {
         try {
             socket = new Socket(InetAddress.getByName("127.0.0.1"), 1234);
+            br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            buf = br.readLine();
+            System.out.println(buf);
+            br.close();
+            socket.close();
         } catch (IOException err) {
             System.out.println(err.toString());
         }

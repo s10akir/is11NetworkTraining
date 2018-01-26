@@ -14,12 +14,20 @@ public class MyServer {
 class MyServerSocket {
     ServerSocket server;
     Socket socket;
+    BufferedWriter bw;
 
     MyServerSocket() {
         try {
             server = new ServerSocket(1234);
-            socket = server.accept();
-            socket.close();
+            while (true) {
+                socket = server.accept();
+                bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                bw.write("スマホrpgは今これをやってるよ。今のジョブはこれ! -> https://www.hellowork.go.jp/ ");
+                bw.newLine();
+                bw.flush();
+            }
+//            bw.close();
+//            socket.close();
         } catch (IOException err) {
             System.out.println(err.toString());
         }
